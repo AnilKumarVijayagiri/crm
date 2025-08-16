@@ -1,0 +1,41 @@
+### Health
+GET http://localhost:8000/api/health
+
+### Seed statuses (optional; seed.mjs covers this)
+POST http://localhost:8000/api/statuses/seed
+
+### Login
+POST http://localhost:8000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@skycrm.local",
+  "password": "Admin@123"
+}
+
+### List leads (use token below)
+GET http://localhost:8000/api/leads
+Authorization: Bearer {{token}}
+
+### Create lead
+POST http://localhost:8000/api/leads
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "phone": "9999999999",
+  "source": "Website",
+  "city": "Hyderabad",
+  "category": "BTech Admissions"
+}
+
+### Change status to Follow-Up
+POST http://localhost:8000/api/leads/{{leadId}}/status
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "statusName": "Follow-Up"
+}
